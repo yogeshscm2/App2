@@ -1,0 +1,32 @@
+<project name="App2" default="task5">
+
+    <target name="task1" >
+	    <delete dir="build"/>
+	</target>
+	
+	<target name="task2" depends="task1">
+	    <mkdir dir="build/java"/>
+	</target>
+	
+	<target name="task3" depends="task2">
+        <javac includeantruntime="false"
+		        srcdir="src/java"
+                destdir="build/java"
+				classpath="xyz.jar"
+                debug="on"
+	    />	
+	</target>
+	
+	
+	<target name="task4" depends="task3">
+	    <jar destfile="build/dist/Demo2.jar" basedir="build"/>
+	</target>
+	
+	<target name="task5" depends="task4">
+        <zip destfile="build/package/Demo2.zip"
+            basedir="build/dist/"
+			update="true"
+        />
+	</target>
+	
+</project>
